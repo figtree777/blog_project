@@ -15,11 +15,13 @@
         <button><a href="{% url 'signup' %}">Signup</a></button>
     {% endif %}
     <button><a href="{% url 'post:create' %}">Create Post</a></button>
-
-
-    <h2>Posts</h2>
+    
+    <hr>
+    <h2>Recent Posts</h2>
     {% for post in posts %}
-        <h3>{{ post.title }}</h3>
+        <h4>{{ post.title }}</h4>
         <p>{{ post.content }}</p>
+        <hr>
     {% endfor %}
+
 {% endblock %}
