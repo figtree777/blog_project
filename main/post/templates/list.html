@@ -4,10 +4,11 @@
 
 {% block content %}
     <h2>Posts</h2>
-    <ul>
-        {% for post in posts %}
-            <li>{{ post.title }}</li>
+    <hr>
+    {% for post in posts %}
+        <li>
+            <h4>{{ post.title }}</h4>
             <p>{{ post.content }}</p>
-        {% endfor %}
-    </ul>
+            <hr>
+    {% endfor %}
 {% endblock %}

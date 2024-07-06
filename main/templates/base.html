@@ -8,6 +8,13 @@
         <title>{% block title %}Blog Posts Website{% endblock %}</title>
     </head>
 
+    <header>
+        {% block header %}
+        <h1><a href="{% url 'home' %}">Blog Posts</a></h1>
+        <hr>
+        {% endblock %}
+    </header>
+
     <body>
         <main>
             {% block content %}
