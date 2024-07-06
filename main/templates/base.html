@@ -3,21 +3,34 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" 
-            integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>{% block title %}Blog Posts Website{% endblock %}</title>
+        <style>
+            .btn-primary {
+                background-color: #ff6a00;
+                border-color: #672204;
+                width: 150px;
+            }
+
+
+            .btn-group button {
+                margin: 3px;
+            }
+        </style>
     </head>
 
     <header>
-        {% block header %}
-        <h1><a href="{% url 'home' %}">Blog Posts</a></h1>
-        <hr>
-        {% endblock %}
-    </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">Blog Posts</a>
+            </div>
+        </nav>
 
-    <body>
+    </header>
+    <div class="container">
         <main>
             {% block content %}
             {% endblock %}
         </main>
+    </div>
 </html>

@@ -6,9 +6,8 @@
     <h2>Posts</h2>
     <hr>
     {% for post in posts %}
-        <li>
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.content }}</p>
-            <hr>
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.content }}</p>
+        <hr>
     {% endfor %}
 {% endblock %}

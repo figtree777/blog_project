@@ -3,25 +3,43 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <h1>Hello, {{ user.username }}!</h1>
-        <form action=" {% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-    {% else %}
-        <h1>Hello, World!</h1>
-        <button><a href="{% url 'login' %}">Login</a></button>
-        <button><a href="{% url 'signup' %}">Signup</a></button>
-    {% endif %}
-    <button><a href="{% url 'post:create' %}">Create Post</a></button>
-    
-    <hr>
-    <h2>Recent Posts</h2>
-    {% for post in posts %}
-        <h4>{{ post.title }}</h4>
-        <p>{{ post.content }}</p>
-        <hr>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if user.is_authenticated %}
+                <h1>Hello, {{ user.username }}!</h1>
+                <form action=" {% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <div class="row"><h1>Hello, World!</h1></div>
+                <div class="row">
+                    <div class="btn-group" role="group">
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-primary">Login</button>
+                        </form>
+                        <form action="{% url 'signup' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-primary">Signup</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
 
+        <div class="col">
+            <h2>Recent Posts</h2>
+            {% for post in posts %}
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.content }}</p>
+                <hr>
+            {% endfor %}
+
+            <a href="{% url 'post:create' %}" class="btn btn-primary">Create Post</a>
+
+        </div>    
+    </div>
+</div>
 {% endblock %}

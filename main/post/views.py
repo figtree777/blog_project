@@ -4,7 +4,7 @@ from .forms import PostForm
 from .models import Post
 
 def list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_at')
     return render(request, 'list.html', {'posts': posts})
 
 def create(request):
