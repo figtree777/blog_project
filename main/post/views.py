@@ -12,7 +12,7 @@ def create(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('list')  # Redirect to a view displaying all posts
+            return redirect('post:list')
     else:
         form = PostForm()
     return render(request, 'create.html', {'form': form})
