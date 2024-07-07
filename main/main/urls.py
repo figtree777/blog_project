@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.models import User
 from django.urls import path, include
 from django.views.generic import TemplateView
 from post.models import Post
@@ -26,6 +27,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('post/', include(('post.urls', 'post'), namespace='post')),
     path('', TemplateView.as_view(template_name='home.html', 
-                                extra_context={'posts': Post.objects.all().order_by('-created_at')[:5]}),
+                                extra_context={'posts': Post.objects.all().order_by('-created_at')[:5],
+                                               'user_count': User.objects.all().count()}),
                                 name='home'),
 ]
