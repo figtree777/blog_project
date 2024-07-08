@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 blog_project.code-workspace
 .DS_Store
+bloat_fix.txt
+fix.py
