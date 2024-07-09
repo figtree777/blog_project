@@ -13,12 +13,18 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
-import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+try:
+    load_dotenv()
+except FileNotFoundError:
+    with open(os.path.join(BASE_DIR, '.env'), 'w') as f:
+        f.write('SECRET_KEY=NUL\n')
+        f.write('DEBUG=False\n')
+import os
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
