@@ -166,9 +166,8 @@ blog_project.code-workspace
 TODO.txt
 
 #Testing and cleaning scripts
-bloat_fix.py
 /test
+bloat_fix.py
 
 #Environments
 /web
-/ollama

@@ -11,7 +11,13 @@ def create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            if request.user.is_anonymous:
+                post.author = "Anonymous"
+                post.is_anonymous = request.user.is_anonymous
+            else:
+                post.author = request.user
+            post.save()
             return redirect('post:list')
     else:
         form = PostForm()

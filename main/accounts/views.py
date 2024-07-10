@@ -21,6 +21,10 @@ class SignUpView(CreateView):
     
     def form_valid(self, form):
         user = form.save()
+        user.email = form.cleaned_data['email']
+        user.username = form.cleaned_data['username']
+        user.save()
+        
         login(self.request, user)
         return super().form_valid(form)
 
