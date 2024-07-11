@@ -7,10 +7,17 @@
     <hr>
     {% for post in posts %}
     <div class="row">
-        <div class="col-auto me-auto"><h4>{{ post.title }}</h4></div>
+        <div class="col-auto me-auto"><a href="{% url 'post:detail' post.id %}">{{ post.title }}</a></div>
         <div class="col-auto "><p>{{ post.author }} at {{ post.created_at }}</p></div>
     </div>
     <p>{{ post.content }}</p>
+    {% if post.comment_count == 0 %}
+        <p>No comments</p>
+    {% elif post.comment_count == 1 %}
+        <p>1 comment</p>
+    {% else %}
+        <p>{{ post.comment_count }} comments</p>
+    {% endif %}
     <hr>
     {% endfor %}
 {% endblock %}

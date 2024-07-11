@@ -47,7 +47,7 @@
 
             {% for post in posts %}
             <div class="row">
-                <div class="col-auto me-auto"><h4>{{ post.title }}</h4></div>
+                <div class="col-auto me-auto"><a href="{% url 'post:detail' post.id %}">{{ post.title }}</a></div>
                 <div class="col-auto "><p>{{ post.author }} at {{ post.created_at }}</p></div>
             </div>
             <p>{{ post.content }}</p>
